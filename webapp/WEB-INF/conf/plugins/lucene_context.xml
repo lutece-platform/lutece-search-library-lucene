@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" >
+
+	<!-- declare all supported mime type, with their indexer impl. -->
+	<bean id="lucene.fileIndexerFactory"  class="fr.paris.lutece.plugins.lucene.service.indexer.FileIndexerFactory">
+ 	 	<property name="indexersMap" >
+            <map>
+                <entry>
+                    <key><value>application/pdf</value></key>
+                    <ref bean="lucene.pdfFileIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/msword</value></key>
+                    <ref bean="lucene.officeIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/vnd.ms-powerpoint</value></key>
+                    <ref bean="lucene.officeIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/vnd.ms-excel</value></key>
+                    <ref bean="lucene.officeIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/vnd.oasis.opendocument.text</value></key>
+                    <ref bean="lucene.oooIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/vnd.oasis.opendocument.spreadsheet</value></key>
+                    <ref bean="lucene.oooIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/vnd.oasis.opendocument.presentation</value></key>
+                    <ref bean="lucene.oooIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/vnd.oasis.opendocument.graphics</value></key>
+                    <ref bean="lucene.oooIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/vnd.oasis.opendocument.chart</value></key>
+                    <ref bean="lucene.oooIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/vnd.oasis.opendocument.formula</value></key>
+                    <ref bean="lucene.oooIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/vnd.oasis.opendocument.database</value></key>
+                    <ref bean="lucene.oooIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/vnd.oasis.opendocument.image</value></key>
+                    <ref bean="lucene.oooIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/vnd.oasis.opendocument.text-master</value></key>
+                    <ref bean="lucene.oooIndexer" />
+                </entry>
+
+                <entry>
+                    <key><value>application/zip</value></key>
+                    <ref bean="lucene.pkgIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/x-tar</value></key>
+                    <ref bean="lucene.pkgIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/x-gzip</value></key>
+                    <ref bean="lucene.pkgIndexer" />
+                </entry>
+            </map>
+        </property>
+ 	 </bean>
+ 	 
+ 	 <bean lazy-init="true" id="lucene.officeIndexer" class="fr.paris.lutece.plugins.lucene.service.indexer.TikaIndexer">
+        <property name="parser">
+            <bean class="org.apache.tika.parser.microsoft.OfficeParser" />
+        </property>
+    </bean>
+   
+   	<bean lazy-init="true" id="lucene.oooIndexer" class="fr.paris.lutece.plugins.lucene.service.indexer.TikaIndexer">
+        <property name="parser">
+            <bean class="org.apache.tika.parser.odf.OpenDocumentParser" />
+        </property>
+    </bean>
+    
+    <bean lazy-init="true" id="lucene.pkgIndexer" class="fr.paris.lutece.plugins.lucene.service.indexer.TikaIndexer">
+        <property name="parser">
+            <bean class="org.apache.tika.parser.pkg.PackageParser" />
+        </property>
+    </bean>
+    
+    <bean id="lucene.pdfFileIndexer" class="fr.paris.lutece.plugins.lucene.service.indexer.PdfFileIndexer" />
+ 	 
+ </beans>
