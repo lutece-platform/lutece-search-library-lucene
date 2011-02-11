@@ -25,13 +25,13 @@
 		<repository>
 			<id>lutece</id>
 			<name>luteceRepository</name>
-			<url>http://dev.lutece.paris.fr/maven_repository</url>
+			<url>http://dev.lutece.paris.fr/maven_repository/library-lucene</url>
 			<layout>default</layout>
 		</repository>
 		<repository>
           <id>luteceSnapshot</id>
           <name>luteceSnapshot</name>
-          <url>http://dev.lutece.paris.fr/snapshot_repository</url>
+          <url>http://dev.lutece.paris.fr/snapshot_repository/library-lucene</url>
           <snapshots>
               <enabled>true</enabled>
           </snapshots>
@@ -101,8 +101,8 @@
 		</dependency>
 	</dependencies>
     <scm>
-        <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/library</connection>
-        <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/library</developerConnection>
-        <url>http://dev.lutece.paris.fr/viewvc/portal/trunk/plugins/library</url>
+        <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/library/library-lucene</connection>
+        <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/library/library-lucene</developerConnection>
+        <url>http://dev.lutece.paris.fr/viewvc/portal/trunk/plugins/library/library-lucene</url>
     </scm>
 </project>
