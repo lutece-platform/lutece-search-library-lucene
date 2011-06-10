@@ -76,7 +76,9 @@ public class TikaIndexer implements IFileIndexer
 
         try
         {
-            WriteOutContentHandler handler = new WriteOutContentHandler(  );
+        	// limit set to -1 means no limit
+        	// see https://issues.apache.org/jira/browse/TIKA-557
+            WriteOutContentHandler handler = new WriteOutContentHandler( -1 );
             Metadata metadata = new Metadata(  );
 
             // context : can add more infos (like Local, for Excel datasheets)
