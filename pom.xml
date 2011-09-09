@@ -8,7 +8,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.paris.lutece.plugins</groupId>
 	<artifactId>library-lucene</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<packaging>lutece-plugin</packaging>
 	<name>Lutece Analyzers and indexers</name>
 	<description>Analyzers and indexers for search with Lucene</description>
@@ -101,8 +101,8 @@
 		</dependency>
 	</dependencies>
     <scm>
-        <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/library/library-lucene</connection>
-        <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/library/library-lucene</developerConnection>
-        <url>http://dev.lutece.paris.fr/viewvc/lutece/portal/trunk/plugins/library/library-lucene</url>
+        <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/tags/library-lucene-1.0.2</connection>
+        <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/tags/library-lucene-1.0.2</developerConnection>
+        <url>http://dev.lutece.paris.fr/viewvc/lutece/portal/tags/library-lucene-1.0.2</url>
     </scm>
 </project>
