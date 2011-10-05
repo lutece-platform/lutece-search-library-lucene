@@ -14,7 +14,7 @@
 	<description>Analyzers and indexers for search with Lucene</description>
 	
 	<properties>
-		<luceneVersion>3.4.0</luceneVersion> <!-- lucene components version -->
+		<luceneVersion>2.9.3</luceneVersion> <!-- lucene components version -->
 		<tikaVersion>0.7</tikaVersion> <!-- tika components version -->
 		<componentName>lucene</componentName>
 		<jiraProjectName>LUCENE</jiraProjectName>
@@ -56,6 +56,11 @@
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-snowball</artifactId>
+            <version>${luceneVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-memory</artifactId>
             <version>${luceneVersion}</version>
         </dependency>
@@ -72,7 +77,7 @@
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-demos</artifactId>
-            <version>3.0.3</version>
+            <version>${luceneVersion}</version>
         </dependency>
 		<dependency>
             <groupId>org.apache.lucene</groupId>
