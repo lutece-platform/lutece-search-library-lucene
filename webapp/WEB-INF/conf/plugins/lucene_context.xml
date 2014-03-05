@@ -24,6 +24,22 @@
                     <ref bean="lucene.officeIndexer" />
                 </entry>
                 <entry>
+                    <key><value>application/vnd.openxmlformats-officedocument.presentationml.presentation</value></key>
+                    <ref bean="lucene.ooxmlIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</value></key>
+                    <ref bean="lucene.ooxmlIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/vnd.openxmlformats-officedocument.wordprocessingml.document</value></key>
+                    <ref bean="lucene.ooxmlIndexer" />
+                </entry>
+                <entry>
+                    <key><value>application/openxmlformats-officedocument.wordprocessingml.template</value></key>
+                    <ref bean="lucene.ooxmlIndexer" />
+                </entry>
+                <entry>
                     <key><value>application/vnd.oasis.opendocument.text</value></key>
                     <ref bean="lucene.oooIndexer" />
                 </entry>
@@ -59,7 +75,6 @@
                     <key><value>application/vnd.oasis.opendocument.text-master</value></key>
                     <ref bean="lucene.oooIndexer" />
                 </entry>
-
                 <entry>
                     <key><value>application/zip</value></key>
                     <ref bean="lucene.pkgIndexer" />
@@ -91,6 +106,12 @@
     <bean lazy-init="true" id="lucene.pkgIndexer" class="fr.paris.lutece.plugins.lucene.service.indexer.TikaIndexer">
         <property name="parser">
             <bean class="org.apache.tika.parser.pkg.PackageParser" />
+        </property>
+    </bean>
+    
+    <bean lazy-init="true" id="lucene.ooxmlIndexer" class="fr.paris.lutece.plugins.lucene.service.indexer.TikaIndexer">
+        <property name="parser">
+            <bean class="org.apache.tika.parser.microsoft.ooxml.OOXMLParser" />
         </property>
     </bean>
     

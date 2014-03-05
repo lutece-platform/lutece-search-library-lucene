@@ -33,16 +33,15 @@
  */
 package fr.paris.lutece.plugins.lucene.service.indexer;
 
-import org.apache.log4j.Logger;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
 
+import org.apache.log4j.Logger;
 import org.apache.pdfbox.exceptions.CryptographyException;
 import org.apache.pdfbox.exceptions.InvalidPasswordException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.PDFTextStripper;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringWriter;
 
 
 /**
@@ -53,9 +52,9 @@ public class PdfFileIndexer implements IFileIndexer
     private static final Logger _log = Logger.getLogger( "lutece.indexer" );
 
     /**
-    *
-    * {@inheritDoc}
-    */
+     * 
+     * {@inheritDoc}
+     */
     public String getContentToIndex( InputStream is )
     {
         String strContent = "";
@@ -65,27 +64,27 @@ public class PdfFileIndexer implements IFileIndexer
         {
             pdfDocument = PDDocument.load( is );
 
-            if ( pdfDocument.isEncrypted(  ) )
+            if ( pdfDocument.isEncrypted( ) )
             {
                 pdfDocument.decrypt( "" );
             }
 
-            StringWriter writer = new StringWriter(  );
-            PDFTextStripper stripper = new PDFTextStripper(  );
+            StringWriter writer = new StringWriter( );
+            PDFTextStripper stripper = new PDFTextStripper( );
             stripper.writeText( pdfDocument, writer );
-            strContent = writer.getBuffer(  ).toString(  );
+            strContent = writer.getBuffer( ).toString( );
         }
         catch ( CryptographyException e )
         {
-            _log.error( e.getMessage(  ), e );
+            _log.error( e.getMessage( ), e );
         }
         catch ( IOException e )
         {
-            _log.error( e.getMessage(  ), e );
+            _log.error( e.getMessage( ), e );
         }
         catch ( InvalidPasswordException e )
         {
-            _log.error( e.getMessage(  ), e );
+            _log.error( e.getMessage( ), e );
         }
         finally
         {
@@ -93,11 +92,11 @@ public class PdfFileIndexer implements IFileIndexer
             {
                 try
                 {
-                    pdfDocument.close(  );
+                    pdfDocument.close( );
                 }
                 catch ( IOException e )
                 {
-                    _log.error( e.getMessage(  ), e );
+                    _log.error( e.getMessage( ), e );
                 }
             }
         }

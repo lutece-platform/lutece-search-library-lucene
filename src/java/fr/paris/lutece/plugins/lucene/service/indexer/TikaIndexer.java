@@ -33,23 +33,22 @@
  */
 package fr.paris.lutece.plugins.lucene.service.indexer;
 
-import org.apache.log4j.Logger;
+import java.io.IOException;
+import java.io.InputStream;
 
+import org.apache.log4j.Logger;
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
-import org.apache.tika.parser.microsoft.OfficeParser; // import not used, be needed to check OfficeParser availability in libraries
-import org.apache.tika.sax.WriteOutContentHandler;
-
+import org.apache.tika.parser.microsoft.OfficeParser;
+import org.apache.tika.sax.BodyContentHandler;
+import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 
 /**
- *
+ * 
  * Wraps a tika indexer, such as {@link OfficeParser}
  */
 public class TikaIndexer implements IFileIndexer
@@ -67,7 +66,7 @@ public class TikaIndexer implements IFileIndexer
     }
 
     /**
-     *
+     * 
      * {@inheritDoc}
      */
     public String getContentToIndex( InputStream is )
@@ -76,28 +75,28 @@ public class TikaIndexer implements IFileIndexer
 
         try
         {
-        	// limit set to -1 means no limit
-        	// see https://issues.apache.org/jira/browse/TIKA-557
-            WriteOutContentHandler handler = new WriteOutContentHandler( -1 );
-            Metadata metadata = new Metadata(  );
+            // limit set to -1 means no limit
+            // see https://issues.apache.org/jira/browse/TIKA-557
+            ContentHandler handler = new BodyContentHandler( -1 );
+            Metadata metadata = new Metadata( );
 
             // context : can add more infos (like Local, for Excel datasheets)
-            ParseContext parseContext = new ParseContext(  );
+            ParseContext parseContext = new ParseContext( );
             _parser.parse( is, handler, metadata, parseContext );
 
-            result = handler.toString(  );
+            result = handler.toString( );
         }
         catch ( IOException ex )
         {
-            _log.error( ex.getMessage(  ), ex );
+            _log.error( ex.getMessage( ), ex );
         }
         catch ( SAXException ex )
         {
-            _log.error( ex.getMessage(  ), ex );
+            _log.error( ex.getMessage( ), ex );
         }
         catch ( TikaException ex )
         {
-            _log.error( ex.getMessage(  ), ex );
+            _log.error( ex.getMessage( ), ex );
         }
 
         return result;

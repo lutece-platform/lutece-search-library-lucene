@@ -1,34 +1,34 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<parent>
-		<artifactId>lutece-plugins-pom</artifactId>
-		<groupId>fr.paris.lutece.plugins</groupId>
-		<version>3.5</version>
-	</parent>
-	
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>fr.paris.lutece.plugins</groupId>
-	<artifactId>library-lucene</artifactId>
-	<version>1.0.6-SNAPSHOT</version>
-	<packaging>lutece-plugin</packaging>
-	<name>Lutece Analyzers and indexers</name>
-	<description>Analyzers and indexers for search with Lucene</description>
-	
-	<properties>
-		<luceneVersion>2.9.3</luceneVersion> <!-- lucene components version -->
-		<tikaVersion>0.7</tikaVersion> <!-- tika components version -->
-		<componentName>lucene</componentName>
-		<jiraProjectName>LUCENE</jiraProjectName>
-		<jiraComponentId>10351</jiraComponentId>
-	</properties>
-	
-	<repositories>
-		<repository>
-			<id>lutece</id>
-			<name>luteceRepository</name>
-			<url>http://dev.lutece.paris.fr/maven_repository</url>
-			<layout>default</layout>
-		</repository>
-		<repository>
+    <parent>
+        <artifactId>lutece-plugins-pom</artifactId>
+        <groupId>fr.paris.lutece.plugins</groupId>
+        <version>3.5</version>
+    </parent>
+    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>fr.paris.lutece.plugins</groupId>
+    <artifactId>library-lucene</artifactId>
+    <version>1.0.6-SNAPSHOT</version>
+    <packaging>lutece-plugin</packaging>
+    <name>Lutece Analyzers and indexers</name>
+    <description>Analyzers and indexers for search with Lucene</description>
+    
+    <properties>
+        <luceneVersion>4.6.1</luceneVersion> <!-- lucene components version -->
+        <tikaVersion>1.5</tikaVersion> <!-- tika components version -->
+        <componentName>lucene</componentName>
+        <jiraProjectName>LUCENE</jiraProjectName>
+        <jiraComponentId>10351</jiraComponentId>
+    </properties>
+    
+    <repositories>
+        <repository>
+            <id>lutece</id>
+            <name>luteceRepository</name>
+            <url>http://dev.lutece.paris.fr/maven_repository</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
           <id>luteceSnapshot</id>
           <name>luteceSnapshot</name>
           <url>http://dev.lutece.paris.fr/snapshot_repository</url>
@@ -36,10 +36,16 @@
               <enabled>true</enabled>
           </snapshots>
         </repository>
-	</repositories>
-	
-	<dependencies>
-		<dependency>
+    </repositories>
+    
+    <dependencies>
+    
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.13</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-core</artifactId>
             <version>${luceneVersion}</version>
@@ -56,11 +62,6 @@
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-snowball</artifactId>
-            <version>${luceneVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-memory</artifactId>
             <version>${luceneVersion}</version>
         </dependency>
@@ -71,35 +72,35 @@
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-spellchecker</artifactId>
+            <artifactId>lucene-queryparser</artifactId>
             <version>${luceneVersion}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-demos</artifactId>
-            <version>${luceneVersion}</version>
-        </dependency>
-		<dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-analyzers</artifactId>
+            <artifactId>lucene-suggest</artifactId>
             <version>${luceneVersion}</version>
         </dependency>
         <dependency>
-			<groupId>org.apache.pdfbox</groupId>
-			<artifactId>pdfbox</artifactId>
-			<version>1.5.0</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.apache.tika</groupId>
-		    <artifactId>tika-core</artifactId>
-		    <version>${tikaVersion}</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.apache.tika</groupId>
-		    <artifactId>tika-parsers</artifactId>
-		    <version>${tikaVersion}</version>
-		</dependency>
-	</dependencies>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId> lucene-analyzers-common</artifactId>
+            <version>${luceneVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>1.8.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-core</artifactId>
+            <version>${tikaVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-parsers</artifactId>
+            <version>${tikaVersion}</version>
+        </dependency>
+    </dependencies>
     <scm>
         <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/library/library-lucene</connection>
         <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/library/library-lucene</developerConnection>
