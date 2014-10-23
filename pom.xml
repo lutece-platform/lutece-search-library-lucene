@@ -14,8 +14,8 @@
     <description>Analyzers and indexers for search with Lucene</description>
     
     <properties>
-        <luceneVersion>4.6.1</luceneVersion> <!-- lucene components version -->
-        <tikaVersion>1.5</tikaVersion> <!-- tika components version -->
+        <luceneVersion>4.9.1</luceneVersion> <!-- lucene components version -->
+        <tikaVersion>1.6</tikaVersion> <!-- tika components version -->
         <componentName>lucene</componentName>
         <jiraProjectName>LUCENE</jiraProjectName>
         <jiraComponentId>10351</jiraComponentId>
