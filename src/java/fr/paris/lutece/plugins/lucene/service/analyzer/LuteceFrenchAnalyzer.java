@@ -163,12 +163,11 @@ public class LuteceFrenchAnalyzer extends Analyzer
 
         Tokenizer source = new StandardTokenizer( _matchVersion, reader );
         TokenStream filter = new StandardFilter( _matchVersion, source );
+        filter = new LowerCaseFilter( _matchVersion, filter );
         filter = new ElisionFilter( filter, _stoptable );
         filter = new StopFilter( _matchVersion, filter, _stoptable );
         filter = new ASCIIFoldingFilter( filter );
         filter = new SnowballFilter( filter, new FrenchStemmer( ) );
-        // Convert to lowercase after stemming!
-        filter = new LowerCaseFilter( _matchVersion, filter );
 
         return new TokenStreamComponents( source, filter )
         {
