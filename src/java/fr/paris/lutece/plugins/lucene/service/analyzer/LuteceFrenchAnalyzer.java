@@ -36,11 +36,12 @@ package fr.paris.lutece.plugins.lucene.service.analyzer;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.CharArraySet;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.Tokenizer;
+import org.apache.lucene.analysis.WordlistLoader;
 import org.apache.lucene.analysis.core.LowerCaseFilter;
 import org.apache.lucene.analysis.core.StopFilter;
 import org.apache.lucene.analysis.fr.FrenchAnalyzer;
@@ -48,10 +49,7 @@ import org.apache.lucene.analysis.miscellaneous.ASCIIFoldingFilter;
 import org.apache.lucene.analysis.snowball.SnowballFilter;
 import org.apache.lucene.analysis.standard.StandardFilter;
 import org.apache.lucene.analysis.standard.StandardTokenizer;
-import org.apache.lucene.analysis.util.CharArraySet;
 import org.apache.lucene.analysis.util.ElisionFilter;
-import org.apache.lucene.analysis.util.WordlistLoader;
-import org.apache.lucene.util.Version;
 import org.tartarus.snowball.ext.FrenchStemmer;
 
 
@@ -103,26 +101,13 @@ public class LuteceFrenchAnalyzer extends Analyzer
      */
     private CharArraySet _stoptable;
 
-    private final Version _matchVersion;
-
     /**
      * Builds an analyzer with the default stop words (
      * {@link #FRENCH_STOP_WORDS}).
      */
     public LuteceFrenchAnalyzer( )
     {
-        this( Version.LUCENE_46 );
-    }
-
-    /**
-     * Builds an analyzer with the default stop words (
-     * {@link #FRENCH_STOP_WORDS}).
-     * @param matchVersion the version
-     */
-    public LuteceFrenchAnalyzer( Version matchVersion )
-    {
-        _stoptable = StopFilter.makeStopSet( matchVersion, FRENCH_STOP_WORDS, false );
-        this._matchVersion = matchVersion;
+        this( FRENCH_STOP_WORDS );
     }
 
     /**
@@ -130,10 +115,9 @@ public class LuteceFrenchAnalyzer extends Analyzer
      * @param matchVersion the version
      * @param stopwords the stop words
      */
-    public LuteceFrenchAnalyzer( Version matchVersion, String[] stopwords )
+    public LuteceFrenchAnalyzer( String[] stopwords )
     {
-        _stoptable = StopFilter.makeStopSet( matchVersion, stopwords );
-        this._matchVersion = matchVersion;
+        _stoptable = StopFilter.makeStopSet( stopwords );
     }
 
     /**
@@ -142,41 +126,28 @@ public class LuteceFrenchAnalyzer extends Analyzer
      * @param stopwords the stop words
      * @throws IOException io exception
      */
-    public LuteceFrenchAnalyzer( Version matchVersion, File stopwords ) throws IOException
+    public LuteceFrenchAnalyzer( File stopwords ) throws IOException
     {
-        _stoptable = WordlistLoader.getWordSet( new FileReader( stopwords ), matchVersion );
-        this._matchVersion = matchVersion;
+        _stoptable = WordlistLoader.getWordSet( new FileReader( stopwords ) );
     }
 
     @Override
-    protected TokenStreamComponents createComponents( String fieldName, Reader reader )
+    protected TokenStreamComponents createComponents( String fieldName )
     {
         if ( fieldName == null )
         {
             throw new IllegalArgumentException( "fieldName must not be null" );
         }
 
-        if ( reader == null )
-        {
-            throw new IllegalArgumentException( "reader must not be null" );
-        }
-
-        Tokenizer source = new StandardTokenizer( _matchVersion, reader );
-        TokenStream filter = new StandardFilter( _matchVersion, source );
-        filter = new LowerCaseFilter( _matchVersion, filter );
+        Tokenizer source = new StandardTokenizer( );
+        TokenStream filter = new StandardFilter( source );
+        filter = new LowerCaseFilter( filter );
         filter = new ElisionFilter( filter, _stoptable );
-        filter = new StopFilter( _matchVersion, filter, _stoptable );
+        filter = new StopFilter( filter, _stoptable );
         filter = new ASCIIFoldingFilter( filter );
         filter = new SnowballFilter( filter, new FrenchStemmer( ) );
 
-        return new TokenStreamComponents( source, filter )
-        {
-            @Override
-            protected void setReader( final Reader reader ) throws IOException
-            {
-                super.setReader( reader );
-            }
-        };
+        return new TokenStreamComponents( source, filter );
 
     }
 }

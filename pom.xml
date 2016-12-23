@@ -8,14 +8,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.paris.lutece.plugins</groupId>
     <artifactId>library-lucene</artifactId>
-    <version>2.0.3-SNAPSHOT</version>
+    <version>3.0.0-SNAPSHOT</version>
     <packaging>lutece-plugin</packaging>
     <name>Lutece Analyzers and indexers</name>
     <description>Analyzers and indexers for search with Lucene</description>
     
     <properties>
-        <luceneVersion>4.9.1</luceneVersion> <!-- lucene components version -->
-        <tikaVersion>1.6</tikaVersion> <!-- tika components version -->
+        <luceneVersion>6.5.1</luceneVersion> <!-- lucene components version -->
+        <tikaVersion>1.13</tikaVersion> <!-- tika components version, same as solr 6.5.1 -->
         <componentName>lucene</componentName>
         <jiraProjectName>LUCENE</jiraProjectName>
         <jiraComponentId>10351</jiraComponentId>
@@ -103,6 +103,10 @@
                 <exclusion>
                     <artifactId>rome</artifactId>
                     <groupId>rome</groupId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging-api</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
