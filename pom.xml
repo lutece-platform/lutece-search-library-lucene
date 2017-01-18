@@ -108,8 +108,8 @@
         </dependency>
     </dependencies>
     <scm>
-        <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/library/library-lucene</connection>
-        <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/library/library-lucene</developerConnection>
-        <url>http://dev.lutece.paris.fr/viewvc/lutece/portal/trunk/plugins/library/library-lucene</url>
+        <connection>scm:git:https://github.com/lutece-platform/lutece-search-library-lucene.git</connection>
+        <developerConnection>scm:git:https://github.com/lutece-platform/lutece-search-library-lucene.git</developerConnection>
+        <url>https://github.com/lutece-platform/lutece-search-library-lucene.git</url>
     </scm>
 </project>
