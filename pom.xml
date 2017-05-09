@@ -101,10 +101,6 @@
             <version>${tikaVersion}</version>
             <exclusions>
                 <exclusion>
-                    <artifactId>rome</artifactId>
-                    <groupId>rome</groupId>
-                </exclusion>
-                <exclusion>
                     <groupId>commons-logging</groupId>
                     <artifactId>commons-logging-api</artifactId>
                 </exclusion>
