@@ -104,6 +104,135 @@
                     <groupId>commons-logging</groupId>
                     <artifactId>commons-logging-api</artifactId>
                 </exclusion>
+
+                <!-- Exclude many transitive dependencies because we don't use these parsers by default -->
+                <!-- This list needs to be revisted when upgrade tika-parsers -->
+
+                <!-- Provides
+                  org.gagravarr.tika.FlacParser
+                  org.gagravarr.tika.OpusParser
+                  org.gagravarr.tika.VorbisParser
+                  org.gagravarr.tika.OggAudioParser
+                  org.gagravarr.tika.OggParser
+                  org.gagravarr.tika.SpeexParser
+                  org.gagravarr.tika.TheoraParser
+                -->
+                <exclusion>
+                    <groupId>org.gagravarr</groupId>
+                    <artifactId>vorbis-java-tika</artifactId>
+                </exclusion>
+                <exclusion>
+                    <!-- see vorbis-java-tika -->
+                    <groupId>org.gagravarr</groupId>
+                    <artifactId>vorbis-java-core</artifactId>
+                </exclusion>
+
+                <exclusion>
+                    <!-- Used by org.apache.tika.parser.microsoft.JackcessParser -->
+                    <groupId>com.healthmarketscience.jackcess</groupId>
+                    <artifactId>jackcess</artifactId>
+                </exclusion>
+
+                <exclusion>
+                    <!-- Used by org.apache.tika.parser.microsoft.JackcessParser -->
+                    <groupId>com.healthmarketscience.jackcess</groupId>
+                    <artifactId>jackcess-encrypt</artifactId>
+                </exclusion>
+
+                <exclusion>
+                    <!-- Used by org.apache.tika.parser.mat.MatParser -->
+                    <groupId>net.sourceforge.jmatio</groupId>
+                    <artifactId>jmatio</artifactId>
+                </exclusion>
+
+                <exclusion>
+                    <!-- Used by org.apache.tika.parser.mp4.MP4Parser -->
+                    <groupId>com.googlecode.mp4parser</groupId>
+                    <artifactId>isoparser</artifactId>
+                </exclusion>
+
+                <exclusion>
+                    <!-- Used by
+                      org.apache.tika.parser.image.WebPParser
+                      org.apache.tika.parser.image.TiffParser
+                      org.apache.tika.parser.image.PSDParser
+                      org.apache.tika.parser.image.BPGParser
+                      org.apache.tika.parser.jpeg.JpegParser
+                    -->
+                    <groupId>com.drewnoakes</groupId>
+                    <artifactId>metadata-extractor</artifactId>
+                </exclusion>
+
+                <exclusion>
+                    <!-- Used by org.apache.tika.parser.mbox.OutlookPSTParser -->
+                    <groupId>com.pff</groupId>
+                    <artifactId>java-libpst</artifactId>
+                </exclusion>
+
+                <exclusion>
+                    <!-- Used by
+                      org.apache.tika.parser.journal.GrobidRESTParser
+                      org.apache.tika.parser.ner.NamedEntityParser (when using NLTKNERecogniser or GrobidNERecogniser)
+                    -->
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-rt-rs-client</artifactId>
+                </exclusion>
+
+                <!-- Used by
+                  org.apache.tika.parser.hdf.HDFParser
+                  org.apache.tika.parser.grib.GribParser
+                  org.apache.tika.parser.netcdf.NetCDFParser
+                -->
+                <exclusion>
+                    <groupId>edu.ucar</groupId>
+                    <artifactId>netcdf4</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>edu.ucar</groupId>
+                    <artifactId>grib</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>edu.ucar</groupId>
+                    <artifactId>cdm</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>edu.ucar</groupId>
+                    <artifactId>httpservices</artifactId>
+                </exclusion>
+
+                <!-- Used by org.apache.tika.parser.geoinfo.GeographicInformationParser -->
+                <exclusion>
+                    <groupId>org.apache.sis.core</groupId>
+                    <artifactId>sis-utility</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.sis.storage</groupId>
+                    <artifactId>sis-netcdf</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.sis.core</groupId>
+                    <artifactId>sis-metadata</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.opengis</groupId>
+                    <artifactId>geoapi</artifactId>
+                </exclusion>
+
+                <exclusion>
+                    <!-- Used by
+                      org.apache.tika.parser.sentiment.SentimentAnalysisParser
+                      org.apache.tika.parser.ner.NamedEntityParser (when using OpenNLPNERecogniser)
+                      org.apache.tika.parser.geo.topic.GeoParser (optional)
+                      -->
+                    <groupId>org.apache.opennlp</groupId>
+                    <artifactId>opennlp-tools</artifactId>
+                </exclusion>
+
+                <!-- Used by org.apache.tika.parser.asm.ClassParser -->
+                <exclusion>
+                    <groupId>org.ow2.asm</groupId>
+                    <artifactId>asm</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
     </dependencies>
