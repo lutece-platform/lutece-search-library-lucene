@@ -38,10 +38,8 @@ import java.io.InputStream;
 import java.io.StringWriter;
 
 import org.apache.log4j.Logger;
-import org.apache.pdfbox.exceptions.CryptographyException;
-import org.apache.pdfbox.exceptions.InvalidPasswordException;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.util.PDFTextStripper;
+import org.apache.pdfbox.text.PDFTextStripper;
 
 
 /**
@@ -66,7 +64,7 @@ public class PdfFileIndexer implements IFileIndexer
 
             if ( pdfDocument.isEncrypted( ) )
             {
-                pdfDocument.decrypt( "" );
+                pdfDocument.setAllSecurityToBeRemoved( true );
             }
 
             StringWriter writer = new StringWriter( );
@@ -74,18 +72,12 @@ public class PdfFileIndexer implements IFileIndexer
             stripper.writeText( pdfDocument, writer );
             strContent = writer.getBuffer( ).toString( );
         }
-        catch ( CryptographyException e )
-        {
-            _log.error( e.getMessage( ), e );
-        }
+        
         catch ( IOException e )
         {
             _log.error( e.getMessage( ), e );
         }
-        catch ( InvalidPasswordException e )
-        {
-            _log.error( e.getMessage( ), e );
-        }
+        
         finally
         {
             if ( pdfDocument != null )
