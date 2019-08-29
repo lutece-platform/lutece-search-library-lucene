@@ -41,7 +41,6 @@ import org.apache.log4j.Logger;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
-
 /**
  * PdfFileIndexer indexes PDF files
  */
@@ -72,12 +71,12 @@ public class PdfFileIndexer implements IFileIndexer
             stripper.writeText( pdfDocument, writer );
             strContent = writer.getBuffer( ).toString( );
         }
-        
-        catch ( IOException e )
+
+        catch( IOException e )
         {
             _log.error( e.getMessage( ), e );
         }
-        
+
         finally
         {
             if ( pdfDocument != null )
@@ -86,7 +85,7 @@ public class PdfFileIndexer implements IFileIndexer
                 {
                     pdfDocument.close( );
                 }
-                catch ( IOException e )
+                catch( IOException e )
                 {
                     _log.error( e.getMessage( ), e );
                 }

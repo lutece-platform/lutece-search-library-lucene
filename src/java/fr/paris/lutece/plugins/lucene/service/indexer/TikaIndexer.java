@@ -46,7 +46,6 @@ import org.apache.tika.sax.BodyContentHandler;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 
-
 /**
  * 
  * Wraps a tika indexer, such as {@link OfficeParser}
@@ -58,7 +57,9 @@ public class TikaIndexer implements IFileIndexer
 
     /**
      * Sets the parse
-     * @param parser the parser
+     * 
+     * @param parser
+     *            the parser
      */
     public void setParser( Parser parser )
     {
@@ -86,15 +87,15 @@ public class TikaIndexer implements IFileIndexer
 
             result = handler.toString( );
         }
-        catch ( IOException ex )
+        catch( IOException ex )
         {
             _log.error( ex.getMessage( ), ex );
         }
-        catch ( SAXException ex )
+        catch( SAXException ex )
         {
             _log.error( ex.getMessage( ), ex );
         }
-        catch ( TikaException ex )
+        catch( TikaException ex )
         {
             _log.error( ex.getMessage( ), ex );
         }

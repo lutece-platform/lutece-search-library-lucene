@@ -35,10 +35,10 @@ package fr.paris.lutece.plugins.lucene.service.indexer;
 
 import java.util.Map;
 
-
 /**
  *
  * IFileIndexerFactory manages multiple {@link IFileIndexer}.
+ * 
  * @see {@link IFileIndexerFactory#getIndexer(String)}
  *
  */
@@ -51,13 +51,17 @@ public interface IFileIndexerFactory
 
     /**
      * Sets the indexers map
-     * @param mapIndexers the indexers to manage
+     * 
+     * @param mapIndexers
+     *            the indexers to manage
      */
     void setIndexersMap( Map<String, IFileIndexer> mapIndexers );
 
     /**
      * Returns the indexer matching the given MIMETYPE
-     * @param strMimeType the mime type
+     * 
+     * @param strMimeType
+     *            the mime type
      * @return the index found, <code>null</code> otherwise.
      */
     IFileIndexer getIndexer( String strMimeType );

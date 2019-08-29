@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.lucene.service.indexer;
 
 import java.util.Map;
 
-
 /**
  * FileIndexerFactory
  */

@@ -35,16 +35,16 @@ package fr.paris.lutece.plugins.lucene.service.indexer;
 
 import java.io.InputStream;
 
-
 /**
  * A file indexer indexes file content
  */
 public interface IFileIndexer
 {
     /**
-     * Indexes the inputStream content.
-     * The <code>InputStream</code> is <b>closed</b> within this method.
-     * @param is input stream.
+     * Indexes the inputStream content. The <code>InputStream</code> is <b>closed</b> within this method.
+     * 
+     * @param is
+     *            input stream.
      * @return the content to index
      */
     String getContentToIndex( InputStream is );
