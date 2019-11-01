@@ -15,7 +15,7 @@
     
     <properties>
         <luceneVersion>6.5.1</luceneVersion> <!-- lucene components version -->
-        <tikaVersion>1.13</tikaVersion> <!-- tika components version, same as solr 6.5.1 -->
+        <tikaVersion>1.22</tikaVersion> <!-- tika components version, same as solr 6.5.1 -->
         <componentName>lucene</componentName>
         <jiraProjectName>LUCENE</jiraProjectName>
         <jiraComponentId>10351</jiraComponentId>
