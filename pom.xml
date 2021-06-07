@@ -2,7 +2,7 @@
     <parent>
         <artifactId>lutece-global-pom</artifactId>
         <groupId>fr.paris.lutece.tools</groupId>
-        <version>4.0.6</version>
+        <version>5.1.1</version>
     </parent>
     
     <modelVersion>4.0.0</modelVersion>
@@ -14,7 +14,7 @@
     <description>Analyzers and indexers for search with Lucene</description>
     
     <properties>
-        <luceneVersion>6.5.1</luceneVersion> <!-- lucene components version -->
+        <luceneVersion>8.8.2</luceneVersion> <!-- lucene components version -->
         <tikaVersion>1.13</tikaVersion> <!-- tika components version, same as solr 6.5.1 -->
         <componentName>lucene</componentName>
         <jiraProjectName>LUCENE</jiraProjectName>

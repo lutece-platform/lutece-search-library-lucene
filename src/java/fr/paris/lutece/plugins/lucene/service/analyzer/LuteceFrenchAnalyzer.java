@@ -47,7 +47,6 @@ import org.apache.lucene.analysis.core.StopFilter;
 import org.apache.lucene.analysis.fr.FrenchAnalyzer;
 import org.apache.lucene.analysis.miscellaneous.ASCIIFoldingFilter;
 import org.apache.lucene.analysis.snowball.SnowballFilter;
-import org.apache.lucene.analysis.standard.StandardFilter;
 import org.apache.lucene.analysis.standard.StandardTokenizer;
 import org.apache.lucene.analysis.util.ElisionFilter;
 import org.tartarus.snowball.ext.FrenchStemmer;
@@ -58,7 +57,6 @@ import org.tartarus.snowball.ext.FrenchStemmer;
  * <ol>
  * <li>{@link StandardTokenizer}</li>
  * <li>{@link ElisionFilter}</li>
- * <li>{@link StandardFilter}</li>
  * <li>{@link StopFilter}</li>
  * <li>{@link ASCIIFoldingFilter}</li>
  * <li>{@link LowerCaseFilter}</li>
@@ -141,8 +139,7 @@ public class LuteceFrenchAnalyzer extends Analyzer
         }
 
         Tokenizer source = new StandardTokenizer( );
-        TokenStream filter = new StandardFilter( source );
-        filter = new LowerCaseFilter( filter );
+        TokenStream filter = new LowerCaseFilter( source );
         filter = new ElisionFilter( filter, _stoptable );
         filter = new StopFilter( filter, _stoptable );
         filter = new ASCIIFoldingFilter( filter );
