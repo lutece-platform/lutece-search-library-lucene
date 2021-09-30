@@ -15,7 +15,7 @@
     
     <properties>
         <luceneVersion>8.10.0</luceneVersion> <!-- lucene components version -->
-        <tikaVersion>1.13</tikaVersion> <!-- tika components version, same as solr 6.5.1 -->
+        <tikaVersion>1.27</tikaVersion> <!-- tika components version, same as solr 6.5.1 -->
         <componentName>lucene</componentName>
         <jiraProjectName>LUCENE</jiraProjectName>
         <jiraComponentId>10351</jiraComponentId>
@@ -41,7 +41,7 @@
     <dependencies>
     
         <dependency>
-            <groupId>log4j</groupId>
+        	<groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.13</version>
         </dependency>
@@ -88,7 +88,7 @@
         <dependency>
             <groupId>org.apache.pdfbox</groupId>
             <artifactId>pdfbox</artifactId>
-            <version>2.0.15</version>
+            <version>2.0.24</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tika</groupId>
