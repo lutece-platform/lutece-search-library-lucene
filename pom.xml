@@ -1,4 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   
     <parent>
         <artifactId>lutece-global-pom</artifactId>
         <groupId>fr.paris.lutece.tools</groupId>
@@ -16,6 +17,7 @@
     <properties>
         <luceneVersion>8.10.0</luceneVersion> <!-- lucene components version -->
         <tikaVersion>1.27</tikaVersion> <!-- tika components version, same as solr 6.5.1 -->
+        <log4j.version>2.14.1</log4j.version>
         <componentName>lucene</componentName>
         <jiraProjectName>LUCENE</jiraProjectName>
         <jiraComponentId>10351</jiraComponentId>
@@ -38,13 +40,13 @@
         </repository>
     </repositories>
     
-    <dependencies>
-    
+    <dependencies>    
+        <!-- Log4j2 -->
         <dependency>
-        	<groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.13</version>
-        </dependency>
+        	<groupId>org.apache.logging.log4j</groupId>
+        	<artifactId>log4j-api</artifactId>
+        	<version>${log4j.version}</version>
+    	</dependency>  
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-core</artifactId>
@@ -104,7 +106,16 @@
                     <groupId>commons-logging</groupId>
                     <artifactId>commons-logging-api</artifactId>
                 </exclusion>
-
+                 <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jul-to-slf4j</artifactId>
+                 </exclusion>  
+                <!-- we have already used in lutece-core log4j-jcl to allows applications coded
+                     to the Commons Logging API to use Log4j 2 as the implementation -->
+                 <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jcl-over-slf4j</artifactId>
+                 </exclusion>   
                 <!-- Exclude many transitive dependencies because we don't use these parsers by default -->
                 <!-- This list needs to be revisted when upgrade tika-parsers -->
 

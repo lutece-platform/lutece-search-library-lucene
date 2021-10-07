@@ -37,7 +37,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
@@ -46,7 +47,7 @@ import org.apache.pdfbox.text.PDFTextStripper;
  */
 public class PdfFileIndexer implements IFileIndexer
 {
-    private static final Logger _log = Logger.getLogger( "lutece.indexer" );
+    private static final Logger _log = LogManager.getLogger( "lutece.indexer" );
 
     /**
      * 

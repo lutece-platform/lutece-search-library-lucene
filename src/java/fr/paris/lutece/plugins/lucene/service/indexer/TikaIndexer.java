@@ -36,7 +36,8 @@ package fr.paris.lutece.plugins.lucene.service.indexer;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.ParseContext;
@@ -52,7 +53,7 @@ import org.xml.sax.SAXException;
  */
 public class TikaIndexer implements IFileIndexer
 {
-    private static final Logger _log = Logger.getLogger( "lutece.indexer" );
+    private static final Logger _log = LogManager.getLogger( "lutece.indexer" );
     private Parser _parser;
 
     /**
