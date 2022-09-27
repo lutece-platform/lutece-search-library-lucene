@@ -40,21 +40,25 @@ import java.util.Map;
  * IFileIndexerFactory manages multiple {@link IFileIndexer}.
  * 
  * @see {@link IFileIndexerFactory#getIndexer(String)}
- *
+ * @deprecated this interface is moved into the plugin-parser with another name {@code #fr.paris.lutece.plugins.parser.service.IParserFactory}
+ * if you want use the new Interface, add the plugin-parser in the pom of your project
  */
+@Deprecated
 public interface IFileIndexerFactory
 {
     /**
      * Bean name, to retrieve the factory from the Spring context.
      */
-    String BEAN_FILE_INDEXER_FACTORY = "lucene.fileIndexerFactory";
+    String BEAN_FILE_INDEXER_FACTORY = "parser.parserFactory";
 
     /**
      * Sets the indexers map
      * 
      * @param mapIndexers
      *            the indexers to manage
+     * @deprecated Use {@code #fr.paris.lutece.plugins.parser.service.IParserFactory#setParsersMap(Map<String, IStreamParser>)}
      */
+    @Deprecated
     void setIndexersMap( Map<String, IFileIndexer> mapIndexers );
 
     /**
@@ -63,6 +67,8 @@ public interface IFileIndexerFactory
      * @param strMimeType
      *            the mime type
      * @return the index found, <code>null</code> otherwise.
+     * @deprecated Use {@code #fr.paris.lutece.plugins.parser.service.IParserFactory#getParser(String)}
      */
+    @Deprecated
     IFileIndexer getIndexer( String strMimeType );
 }

@@ -37,7 +37,10 @@ import java.io.InputStream;
 
 /**
  * A file indexer indexes file content
+ * @deprecated this interface is moved into the plugin-parser with another name {@code #fr.paris.lutece.plugins.parser.service.IStreamParser}
+ * if you want use the new Interface, add the plugin-parser in the pom of your project
  */
+@Deprecated
 public interface IFileIndexer
 {
     /**
@@ -46,6 +49,8 @@ public interface IFileIndexer
      * @param is
      *            input stream.
      * @return the content to index
+     * @deprecated Use {@code #fr.paris.lutece.plugins.parser.service.IStreamParser#parse(InputStream)}
      */
+	@Deprecated
     String getContentToIndex( InputStream is );
 }

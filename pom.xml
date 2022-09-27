@@ -9,15 +9,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.paris.lutece.plugins</groupId>
     <artifactId>library-lucene</artifactId>
-    <version>5.0.4-SNAPSHOT</version>
+    <version>6.0.0</version>
     <packaging>lutece-plugin</packaging>
     <name>Lutece Analyzers and indexers</name>
     <description>Analyzers and indexers for search with Lucene</description>
     
     <properties>
         <luceneVersion>8.10.0</luceneVersion> <!-- lucene components version -->
-        <tikaVersion>1.27</tikaVersion> <!-- tika components version, same as solr 8.10 -->
-        <log4j.version>2.17.1</log4j.version>
         <componentName>lucene</componentName>
         <jiraProjectName>LUCENE</jiraProjectName>
         <jiraComponentId>10351</jiraComponentId>
@@ -42,12 +40,7 @@
     </repositories>
     
     <dependencies>    
-        <!-- Log4j2 -->
-        <dependency>
-        	<groupId>org.apache.logging.log4j</groupId>
-        	<artifactId>log4j-api</artifactId>
-        	<version>${log4j.version}</version>
-    	</dependency>  
+       
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-core</artifactId>
@@ -87,174 +80,7 @@
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-analyzers-common</artifactId>
             <version>${luceneVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.pdfbox</groupId>
-            <artifactId>pdfbox</artifactId>
-            <version>2.0.24</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-core</artifactId>
-            <version>${tikaVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-parsers</artifactId>
-            <version>${tikaVersion}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging-api</artifactId>
-                </exclusion>
-                 <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>jul-to-slf4j</artifactId>
-                 </exclusion>  
-                <!-- we have already used in lutece-core log4j-jcl to allows applications coded
-                     to the Commons Logging API to use Log4j 2 as the implementation -->
-                 <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>jcl-over-slf4j</artifactId>
-                 </exclusion>   
-                <!-- Exclude many transitive dependencies because we don't use these parsers by default -->
-                <!-- This list needs to be revisted when upgrade tika-parsers -->
-
-                <!-- Provides
-                  org.gagravarr.tika.FlacParser
-                  org.gagravarr.tika.OpusParser
-                  org.gagravarr.tika.VorbisParser
-                  org.gagravarr.tika.OggAudioParser
-                  org.gagravarr.tika.OggParser
-                  org.gagravarr.tika.SpeexParser
-                  org.gagravarr.tika.TheoraParser
-                -->
-                <exclusion>
-                    <groupId>org.gagravarr</groupId>
-                    <artifactId>vorbis-java-tika</artifactId>
-                </exclusion>
-                <exclusion>
-                    <!-- see vorbis-java-tika -->
-                    <groupId>org.gagravarr</groupId>
-                    <artifactId>vorbis-java-core</artifactId>
-                </exclusion>
-
-                <exclusion>
-                    <!-- Used by org.apache.tika.parser.microsoft.JackcessParser -->
-                    <groupId>com.healthmarketscience.jackcess</groupId>
-                    <artifactId>jackcess</artifactId>
-                </exclusion>
-
-                <exclusion>
-                    <!-- Used by org.apache.tika.parser.microsoft.JackcessParser -->
-                    <groupId>com.healthmarketscience.jackcess</groupId>
-                    <artifactId>jackcess-encrypt</artifactId>
-                </exclusion>
-
-                <exclusion>
-                    <!-- Used by org.apache.tika.parser.mat.MatParser -->
-                    <groupId>net.sourceforge.jmatio</groupId>
-                    <artifactId>jmatio</artifactId>
-                </exclusion>
-
-                <exclusion>
-                    <!-- Used by org.apache.tika.parser.mp4.MP4Parser -->
-                    <groupId>com.googlecode.mp4parser</groupId>
-                    <artifactId>isoparser</artifactId>
-                </exclusion>
-
-                <exclusion>
-                    <!-- Used by
-                      org.apache.tika.parser.image.WebPParser
-                      org.apache.tika.parser.image.TiffParser
-                      org.apache.tika.parser.image.PSDParser
-                      org.apache.tika.parser.image.BPGParser
-                      org.apache.tika.parser.jpeg.JpegParser
-                    -->
-                    <groupId>com.drewnoakes</groupId>
-                    <artifactId>metadata-extractor</artifactId>
-                </exclusion>
-
-                <exclusion>
-                    <!-- Used by org.apache.tika.parser.mbox.OutlookPSTParser -->
-                    <groupId>com.pff</groupId>
-                    <artifactId>java-libpst</artifactId>
-                </exclusion>
-
-                <exclusion>
-                    <!-- Used by
-                      org.apache.tika.parser.journal.GrobidRESTParser
-                      org.apache.tika.parser.ner.NamedEntityParser (when using NLTKNERecogniser or GrobidNERecogniser)
-                    -->
-                    <groupId>org.apache.cxf</groupId>
-                    <artifactId>cxf-rt-rs-client</artifactId>
-                </exclusion>
-
-                <!-- Used by
-                  org.apache.tika.parser.hdf.HDFParser
-                  org.apache.tika.parser.grib.GribParser
-                  org.apache.tika.parser.netcdf.NetCDFParser
-                -->
-                <exclusion>
-                    <groupId>edu.ucar</groupId>
-                    <artifactId>netcdf4</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>edu.ucar</groupId>
-                    <artifactId>grib</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>edu.ucar</groupId>
-                    <artifactId>cdm</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>edu.ucar</groupId>
-                    <artifactId>httpservices</artifactId>
-                </exclusion>
-
-                <!-- Used by org.apache.tika.parser.geoinfo.GeographicInformationParser -->
-                <exclusion>
-                    <groupId>org.apache.sis.core</groupId>
-                    <artifactId>sis-utility</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.sis.storage</groupId>
-                    <artifactId>sis-netcdf</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.sis.core</groupId>
-                    <artifactId>sis-metadata</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.opengis</groupId>
-                    <artifactId>geoapi</artifactId>
-                </exclusion>
-
-                <exclusion>
-                    <!-- Used by
-                      org.apache.tika.parser.sentiment.SentimentAnalysisParser
-                      org.apache.tika.parser.ner.NamedEntityParser (when using OpenNLPNERecogniser)
-                      org.apache.tika.parser.geo.topic.GeoParser (optional)
-                      -->
-                    <groupId>org.apache.opennlp</groupId>
-                    <artifactId>opennlp-tools</artifactId>
-                </exclusion>
-
-                <!-- Used by org.apache.tika.parser.asm.ClassParser -->
-                <exclusion>
-                    <groupId>org.ow2.asm</groupId>
-                    <artifactId>asm</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.httpcomponents</groupId>
-                    <artifactId>httpclient</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.httpcomponents</groupId>
-                    <artifactId>httpmime</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        </dependency>        
     </dependencies>
     <scm>
         <connection>scm:git:https://github.com/lutece-platform/lutece-search-library-lucene.git</connection>
