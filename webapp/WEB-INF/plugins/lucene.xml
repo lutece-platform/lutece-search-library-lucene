@@ -11,7 +11,7 @@
 	<description>lucene.library.description</description>
 	<provider>lucene.library.provider</provider>
 	<provider-url>http://lutece.paris.fr</provider-url>
-	<icon-url>images/admin/skin/plugins/lucene/lucene.png</icon-url>
+	<icon-url>themes/admin/shared/images/plugins/lucene.svg</icon-url>
 	<copyright>Copyright 2001-2010 Mairie de Paris</copyright>
     <core-version-dependency>
 		<min-core-version>7.0.0</min-core-version>
