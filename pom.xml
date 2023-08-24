@@ -16,7 +16,7 @@
     
     <properties>
         <luceneVersion>8.10.0</luceneVersion> <!-- lucene components version -->
-        <tikaVersion>1.27</tikaVersion> <!-- tika components version, same as solr 8.10 -->
+        <tikaVersion>1.28.3</tikaVersion> <!-- tika components version, same as solr 8.10 -->
         <log4j.version>2.17.1</log4j.version>
         <componentName>lucene</componentName>
         <jiraProjectName>LUCENE</jiraProjectName>
