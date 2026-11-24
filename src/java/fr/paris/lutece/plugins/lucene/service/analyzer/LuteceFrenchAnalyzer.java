@@ -140,7 +140,8 @@ public class LuteceFrenchAnalyzer extends Analyzer
 
         Tokenizer source = new StandardTokenizer( );
         TokenStream filter = new LowerCaseFilter( source );
-        filter = new ElisionFilter( filter, _stoptable );
+        // elided articles of French, not the stop words: m', t', lorsqu', puisqu', quoiqu' are not in the stop list
+        filter = new ElisionFilter( filter, FrenchAnalyzer.DEFAULT_ARTICLES );
         filter = new StopFilter( filter, _stoptable );
         filter = new ASCIIFoldingFilter( filter );
         filter = new SnowballFilter( filter, new FrenchStemmer( ) );
